@@ -4,18 +4,23 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
-import Home from './views/Hello'
+import Home from './views/Home'
 import Try from './views/Try'
+import Footer from './components/Footer'
+import Grid from './components/grid'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Home},
   { path: '/try',component:Try},
+  { path:'/footer',component:Footer},
+  { path:'/grid',component:Grid}
 ]
 
 const router = new VueRouter({
   routes
+  
 })
 
 FastClick.attach(document.body)
