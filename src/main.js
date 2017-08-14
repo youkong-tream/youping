@@ -5,17 +5,15 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import Home from './views/Home'
-import Try from './views/Try'
 import Footer from './components/Footer'
-import Grid from './components/grid'
+import List from './views/list'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Home},
-  { path: '/try',component:Try},
   { path:'/footer',component:Footer},
-  { path:'/grid',component:Grid}
+  { path:'/list',component:List}
 ]
 
 const router = new VueRouter({
