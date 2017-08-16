@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <Footer></footer>
+    <!-- <Footer></footer> -->
   </div>
   
 </template>
@@ -9,11 +9,7 @@
 <script>
 import Footer from './components/Footer'
 export default {
-  name: 'app',
-  comments: {
-    Footer
-  }
-
+  name: 'app', 
 }
 </script>
 

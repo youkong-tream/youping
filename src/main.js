@@ -7,13 +7,20 @@ import App from './App'
 import Home from './views/Home'
 import Footer from './components/Footer'
 import List from './views/list'
+import MeIndex from './views/Me-index'
+import MeAccount from './views/Me-account'
+import ShoppingCar from './views/ShoppingCar'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: Home},
   { path:'/footer',component:Footer},
-  { path:'/list',component:List}
+  { path:'/list',component:List},
+  { path:'/me',redirect:'/me/index'},
+  { path:'/me/index',component:MeIndex},
+  { path:'/me/account',component:MeAccount},
+  { path:'/shoppingCar',component:ShoppingCar}
 ]
 
 const router = new VueRouter({

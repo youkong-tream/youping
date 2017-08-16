@@ -27,11 +27,14 @@
       <div class = 'button-box'>
         <scroller lock-y :scrollbar-x=false>
           <div class="button">
-              <div class="button-item" v-for="i in itemText"><span class='button-text'>{{i}}</span></div>
+              <div class="button-item" v-for="i in itemText" @click='getSth'>{{i}}</div>
           </div>
       </scroller>   
       </div>
-      <div class = 'img'></div>
+      <div class = 'img'>
+        <div class = 'img-left'></div>
+        <div class = 'img-right'></div>
+      </div>
     </div>
     <div class = 'foot'>
       <Footer></Footer>
@@ -42,7 +45,7 @@
 </template>
 
 <script>
-import { Scroller, Divider, Spinner, XButton, Group, Cell, LoadMore } from 'vux'
+import { Scroller,LoadMore } from 'vux'
 import Footer from '../components/Footer'
 export default {
   data(){
@@ -53,6 +56,11 @@ export default {
   components:{
     Footer,
     Scroller
+  },
+  methods:{
+    getSth() {
+      this.$router.push('/')
+    }
   }
   
 }
@@ -66,7 +74,7 @@ export default {
     align-items:center;   
 }
     .back-icon {
-      background:url('../assets/list-back.png') no-repeat;
+      background:url('../assets/list/back.png') no-repeat;
       width:23px;
       height:23px;
       background-size:100% auto;
@@ -82,13 +90,13 @@ export default {
     width:70px;
     }
       .shopingCar-icon {
-        background:url('../assets/list-shoppingCar.png') no-repeat;
+        background:url('../assets/list/shoppingCar.png') no-repeat;
         width:23px;
         height:23px;
         background-size:100% auto;
       }
       .search-icon {
-        background:url('../assets/list-search.png');
+        background:url('../assets/list/search.png');
         width:23px;
         height:23px;
         background-size:100% auto;
@@ -111,8 +119,28 @@ export default {
       line-height: 40px;
       margin-top:10px;
     }
-    .button-text {
-    }
-
+         .button-item:visited {
+           border-radius: 5px;
+           border:1px solid lightgoldenrodyellow;
+           color:red;
+         }
+.img {
+  display:flex;
+  margin-top:2px;
+}         
+.img-left {
+   width:48.5%;
+   height:230px;
+   background-color:aquamarine;
+   margin-left:1%;
+   display:inline-block;
+ }
+ .img-right {
+   width:48.5%;
+   height:230px;
+   background-color:aquamarine;
+   margin-left:1%;
+   display:inline-block;
+ }        
 </style>
 

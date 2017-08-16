@@ -3,7 +3,7 @@
     <div class = 'content'>
       <div class = 'home-top'>
         <div class = 'top-font'>
-          <h2>优品电商</h2>
+          <span>优品电商</span>
         </div>
       </div>
       <div class = 'middle'></div>       
@@ -57,7 +57,8 @@ export default {
   },
   methods:{
     firstRoute:function(){
-      window.location.href='./#/list';
+      this.$router.push('/list');
+      console.log('lala')
     } 
   }
   
@@ -71,11 +72,9 @@ export default {
   position:fixed;
   bottom:0;
   width:100%;
-
-  
 }
 .home-top {
-  background:url("../assets/home-cook.png") no-repeat;
+  background:url("../assets/home/cook.png") no-repeat;
   background-size:100% auto;
   height:180px;
  
@@ -94,9 +93,6 @@ export default {
 .middle-border {
     height:412px;
     margin-top:-460px;
-   
-     
-
    }  
       .middle-border-first {
         margin-top:-60px;
@@ -110,7 +106,7 @@ export default {
         display:flex;
       }
       .middle-border-first-icon {
-        background:url('../assets/home-border-ve.png') no-repeat;
+        background:url('../assets/home/border-ve.png') no-repeat;
         background-size:100% auto;
         width:90px;
         height:90px;
@@ -125,47 +121,47 @@ export default {
            color:gray;
          }
       .middle-border-first-backimg {
-        background:url('../assets/home-border-ve-img.png')no-repeat;
+        background:url('../assets/home/border-ve-img.png')no-repeat;
         background-size:100% auto;
         width:30px;
         height:30px;
         margin:auto;
       }
       .middle-border-second-backimg {
-        background:url('../assets/home-border-lanzi-img.png')no-repeat;
+        background:url('../assets/home/border-lanzi-img.png')no-repeat;
         background-size:100% auto;
         width:30px;
         height:30px;
         margin:auto;
       }
       .middle-border-third-backimg {
-        background:url('../assets/home-border-rice-img.png')no-repeat;
+        background:url('../assets/home/border-rice-img.png')no-repeat;
         background-size:100% auto;
         width:30px;
         height:30px;
         margin:auto;
       }
       .middle-border-forth-backimg {
-        background:url('../assets/home-border-knife-img.png')no-repeat;
+        background:url('../assets/home/border-knife-img.png')no-repeat;
         background-size:100% auto;
         width:30px;
         height:30px;
         margin:auto;
       }
       .middle-border-second-icon {
-        background:url('../assets/home-border-egg.png') no-repeat;
+        background:url('../assets/home/border-egg.png') no-repeat;
         background-size:100% auto;
         width:90px;
         height:90px;
       }
       .middle-border-third-icon {
-        background:url('../assets/home-border-rice.png') no-repeat;
+        background:url('../assets/home/border-rice.png') no-repeat;
         background-size:100% auto;
         width:90px;
         height:90px;
       }
       .middle-border-forth-icon{
-        background:url('../assets/home-border-last.png') no-repeat;
+        background:url('../assets/home/border-last.png') no-repeat;
         background-size:100% auto;
         width:90px;
         height:90px;

@@ -18,14 +18,14 @@
           <flexbox-item>
               <div class="footer-content">
                 <div class="footer-three-icon"></div>
-                <router-link to="/list">购物车</router-link>
+                <router-link to="/shoppingCar">购物车</router-link>
                 <router-view></router-view>
             </div>
           </flexbox-item>
           <flexbox-item>
               <div class="footer-content">
                  <div class="footer-four-icon"></div>
-                 <router-link to="/list">我的</router-link>
+                 <router-link to="/me">我的</router-link>
                  <router-view></router-view>
              </div>
           </flexbox-item>
