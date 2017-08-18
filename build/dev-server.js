@@ -53,6 +53,15 @@ app.use(require('connect-history-api-fallback')())
 
 // serve webpack bundle output
 app.use(devMiddleware)
+//代理
+app.use(['/app'], proxyMiddleware('http://192.169.2.246:28900', {
+        forwardPath: function (req, res) {
+            console.log(proxyConf.proxyPathTo + req.baseUrl + require('url').parse(req.url).path);
+            return req.baseUrl + require('url').parse(req.url).path;
+        },
+
+    }));
+
 
 // enable hot-reload and state-preserving
 // compilation error display

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class = 'content'>
-      <div class = 'home-top'>
+       <div class = 'home-top'>
         <div class = 'top-font'>
           <span>优品电商</span>
         </div>
@@ -16,7 +16,7 @@
           </div>
           <div class = 'middle-border-first-backimg'></div>
         </div>
-        <div class = 'middle-border-second'>
+        <div class = 'middle-border-second' @click='secondRoute'>
           <div class = 'middle-border-second-icon'></div>
           <div class = 'middle-border-second-text'>
             <span class = 'top-one'>一村一品</span>
@@ -24,15 +24,7 @@
           </div>
           <div class = 'middle-border-second-backimg'></div>
         </div>
-        <div class = 'middle-border-third'>
-          <div class = 'middle-border-third-icon'></div>
-          <div class = 'middle-border-third-text'>
-            <span class = 'top-one'>定向扶贫</span>
-            <span class = 'bottom-one'>愉快购物，奉献爱心</span>
-          </div>
-          <div class = 'middle-border-third-backimg'></div>
-        </div>
-        <div class = 'middle-border-forth'>
+        <div class = 'middle-border-forth' @click='thirdRoute'>
           <div class = 'middle-border-forth-icon'></div>
           <div class = 'middle-border-forth-text'>
             <span class = 'top-one'>全部商品</span>
@@ -43,25 +35,39 @@
       </div> 
     </div>  
     <div class="foot">
-      <Footer></Footer>
+      <Yfooter></Yfooter>
     </div>
   </div>
 </template>
 
 <script>
-import Footer from '../components/Footer'
+import Yfooter from '../components/Yfooter'
 
 export default {
   components: {
-    Footer   
+    Yfooter   
   },
   methods:{
     firstRoute:function(){
       this.$router.push('/list');
-      console.log('lala')
-    } 
+      console.log('lala');
+      this.$http.post('/app/listRecommendProduct.htm')
+         .then(res => {
+           console.log(res)
+         })
+         .catch(err => {
+           console.log(err)
+         });
+     },
+    secondRoute:function() {
+      this.$router.push('/list');
+      console.log('haha');
+    },
+    thirdRoute:function() {
+      this.$router.push('/list');
+      console.log('hehe')
+    }
   }
-  
 }
 </script>
 <style lang='less'>
@@ -77,32 +83,28 @@ export default {
   background:url("../assets/home/cook.png") no-repeat;
   background-size:100% auto;
   height:180px;
- 
 }
     .top-font {
       display:flex;
       align-items:center;
       justify-content: center;
       color:aliceblue;
-      font-size:18px;
+      font-size:1.8rem;
     }
 .middle{
-  height:360px;
-  background-color:#c0c0c0;
+  height:280px;;
+  background-color:#EBEBEB;
 }  
 .middle-border {
-    height:412px;
-    margin-top:-460px;
+    height:320px;
+    margin-top:-350px;
    }  
-      .middle-border-first {
-        margin-top:-60px;
-      }
-      .middle-border-first,.middle-border-second,.middle-border-third,.middle-border-forth {
+      .middle-border-first,.middle-border-second,.middle-border-forth {
         height:88px;
-        width:363px;
+        width:96%;
         background-color:white;
-        border-radius: 8px;
-        margin:20px auto;
+        border-radius:0.8rem;
+        margin:2rem auto;
         display:flex;
       }
       .middle-border-first-icon {
@@ -111,7 +113,7 @@ export default {
         width:90px;
         height:90px;
       }
-      .middle-border-first-text,.middle-border-second-text,.middle-border-third-text,.middle-border-forth-text {
+      .middle-border-first-text,.middle-border-second-text,.middle-border-forth-text {
         display:flex;
         flex-direction:column;
         margin:auto;
@@ -134,13 +136,6 @@ export default {
         height:30px;
         margin:auto;
       }
-      .middle-border-third-backimg {
-        background:url('../assets/home/border-rice-img.png')no-repeat;
-        background-size:100% auto;
-        width:30px;
-        height:30px;
-        margin:auto;
-      }
       .middle-border-forth-backimg {
         background:url('../assets/home/border-knife-img.png')no-repeat;
         background-size:100% auto;
@@ -154,21 +149,10 @@ export default {
         width:90px;
         height:90px;
       }
-      .middle-border-third-icon {
-        background:url('../assets/home/border-rice.png') no-repeat;
-        background-size:100% auto;
-        width:90px;
-        height:90px;
-      }
       .middle-border-forth-icon{
         background:url('../assets/home/border-last.png') no-repeat;
         background-size:100% auto;
         width:90px;
         height:90px;
-
       }
-// .foot {
-//   background:#8c9cb3;
-//   height:80px;
-// }    
 </style>

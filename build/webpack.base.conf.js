@@ -12,6 +12,37 @@ function resolve (dir) {
 }
 
 let webpackConfig = {
+  devServer: {
+        hot: true,
+        inline: true, //其实很简单的，只要配置这个参数就可以了
+        proxy: [{
+            path: '/app/*',
+            // target: 'http://192.169.2.246:10086/mockjsdata/3',
+            target: 'http://192.169.2.246:28900',
+            // target: 'http://192.169.2.110:8084/',
+            // target: 'http://127.0.0.1:8084/',
+            secure: false
+        }, {
+            path: '/do/upload/*',
+            // target: 'http://192.169.2.246:10086/mockjsdata/3',
+            target: 'http://192.169.2.246:28900',
+            // target: 'http://192.169.2.110:8084/',
+            // target: 'http://127.0.0.1:8084/',
+            secure: false
+        }, {
+            path: '/mobile/favicon.ico',
+            // target: 'http://192.169.2.246:10086/mockjsdata/3',
+            target: 'http://192.169.2.246:28900',
+            // target: 'http://192.169.2.110:8084/',
+            // target: 'http://127.0.0.1:8084/',
+            secure: false
+        },{
+            path: '/mobile/lib/amaze/js/amazeui.min.js',
+            target: 'http://192.169.2.246:28900',
+            // target: 'http://127.0.0.1:8084/',
+            secure: false
+        }]
+    },
   entry: {
     app: './src/main.js'
   },

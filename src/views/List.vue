@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class = 'foot'>
-      <Footer></Footer>
+      <Yfooter></Yfooter>
     </div>
   </div>  
     
@@ -46,7 +46,7 @@
 
 <script>
 import { Scroller,LoadMore } from 'vux'
-import Footer from '../components/Footer'
+import Yfooter from '../components/Yfooter'
 export default {
   data(){
     return {
@@ -54,7 +54,7 @@ export default {
     }
   },
   components:{
-    Footer,
+    Yfooter,
     Scroller
   },
   methods:{

@@ -21,7 +21,7 @@
           </div>
           <div class = 'me-middle-btn-right'>
             <div class = 'me-middle-btn-right-img'></div>
-            <div class = 'me-middle-btn-right-text'>购物车</div>
+            <div class = 'me-middle-btn-right-text' @click='toShoppingCar'>购物车</div>
           </div>
         </div>
       </div>
@@ -59,19 +59,22 @@
       </div>
     </div>
     <div class = 'foot'>
-        <Footer></Footer>
+        <Yfooter></Yfooter>
     </div>
   </div>
 </template>
 <script>
-import Footer from '../components/Footer'
+import Yfooter from '../components/Yfooter'
 export default {
   components:{
-    Footer
+    Yfooter
   },
   methods:{
     toAccount() {
       this.$router.push('/me/account');
+    },
+    toShoppingCar() {
+      this.$router.push('/shoppingCar');
     }
   }
 }
