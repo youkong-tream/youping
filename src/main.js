@@ -17,7 +17,7 @@ import RegisterIndex from './views/Register'
 import ForgetStep1 from './views/ForgetStep1'
 import ForgetStep2 from'./views/ForgetStep2'
 import ForgetStep3 from'./views/ForgetStep3'
-
+import FooterTry from './components/FooterTry'
 
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
@@ -35,8 +35,8 @@ const routes = [
   {path: '/register', component: RegisterIndex},
   {path: '/forget/step1', component: ForgetStep1},
   {path: '/forget/step2', component: ForgetStep2},
-  {path: '/forget/step3', component: ForgetStep3}
-
+  {path: '/forget/step3', component: ForgetStep3},
+  {path: '/lala',component:FooterTry}
 ]
 
 const router = new VueRouter({

@@ -80,9 +80,9 @@ export default {
   width:100%;
 }
 .home-top {
-  background:url("../assets/home/cook.png") no-repeat;
-  background-size:100% auto;
-  height:180px;
+    background:url("../assets/home/cook.png") no-repeat;
+    background-size:100% auto;
+    height:180px;
 }
     .top-font {
       display:flex;
