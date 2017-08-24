@@ -25,7 +25,7 @@ export default {
      },
      methods: {
          routerto(routerPath,isActive) {
-              this.$router.push(routerPath);
+            //   this.$router.push(routerPath);
               this.isActive = !this.isActive
              }
          }

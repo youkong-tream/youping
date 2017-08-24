@@ -262,7 +262,8 @@ export default {
                height:18px;
                background:url('../assets/me/list-back.png')no-repeat;
                background-size:100% auto;
-               margin-left:34%;
+               margin-left:30%;
+              //  margin-left:34%;
              }
         }
         .me-middle-myList-balance {

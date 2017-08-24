@@ -1,7 +1,8 @@
 <template>
   <div class="registerMain">
     <div class="registerNav">
-      <a href="#" class="nav_back"><</a>
+      <a href="#" class="nav_back"
+><</a>
       <div class="nav_reg">找回密码</div>
     </div>
     <div class="registerInput">
@@ -30,18 +31,19 @@
   </div>
 </template>
 <script>
-  export default {}
+export default {}
 </script>
 <style>
-  .stepVerification{
-    width: 11rem;
-    height: 3.5rem;
-    float: right;
-    overflow: hidden;
-  }
-  .registerInput .stepVerificationInput{
-    width: 40%;
-  }
+.stepVerification {
+  width: 11rem;
+  height: 3.5rem;
+  float: right;
+  overflow: hidden;
+}
+
+.registerInput .stepVerificationInput {
+  width: 40%;
+}
 </style>
 
 
