@@ -62,6 +62,25 @@ export default {
     secondRoute:function() {
       this.$router.push('/list');
       console.log('haha');
+      this.$http.get('/app/productList.htm',{
+        params:{
+          pageNumber:2
+        }
+      })
+         .then(res => {
+           console.log(res);
+           this.$http.post('/app/productList.htm')
+              .then(res => {
+                console.log(res);
+                console.log(res.data.list[1].bigPicPath1)
+              })
+              .catch(err => {
+                console.log(err)
+              })
+         })
+         .catch(err => {
+           console.log(err)
+         })
     },
     thirdRoute:function() {
       this.$router.push('/list');
@@ -80,9 +99,9 @@ export default {
   width:100%;
 }
 .home-top {
-  background:url("../assets/home/cook.png") no-repeat;
-  background-size:100% auto;
-  height:180px;
+    background:url("../assets/home/cook.png") no-repeat;
+    background-size:100% auto;
+    height:180px;
 }
     .top-font {
       display:flex;
