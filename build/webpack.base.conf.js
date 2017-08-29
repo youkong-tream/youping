@@ -43,6 +43,12 @@ let webpackConfig = {
             secure: false
         }]
     },
+    externals: {
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vuex': 'Vuex',
+      'axios': 'axios'
+    },
   entry: {
     app: './src/main.js'
   },
