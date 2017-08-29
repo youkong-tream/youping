@@ -8,12 +8,13 @@
         <div class="mainBox">
             <form class="clearFix">
                 <div class="logoInput fn-left clearFix"><label
-                    class=" fn-left am-icon-mobile-phone icon1"></label><input
-                    class="fn-left" v-model="mobile"><span class="am-icon-check icon-ok" v-show="hasMobile"></span>
+                    class=" fn-left am-icon-mobile-phone icon1"></label>
+                    <input class="fn-left" v-model="mobile" placeholder="请填写手机号"><span class="am-icon-check icon-ok"
+                                                                                       v-show="hasMobile"></span>
                 </div>
                 <div class="logoInput fn-left clearFix" v-if="isShowPassword">
                     <label class=" fn-left am-icon-unlock-alt icon2"></label>
-                    <input class="fn-left" v-model="password" type="password">
+                    <input class="fn-left" v-model="password" type="password" placeholder="请填写您的密码">
                     <span class="am-icon-check icon-ok" v-show="hasPassword"></span>
                     <div @click='showPassword' class="div-icon-check">
                         <i class="am-icon-eye eyePink"></i>
@@ -21,7 +22,7 @@
                 </div>
                 <div class="logoInput fn-left clearFix" v-else>
                     <label class=" fn-left am-icon-unlock-alt icon2"></label>
-                    <input class="fn-left" v-model="password" type="text">
+                    <input class="fn-left" v-model="password" type="text" placeholder="请填写您的密码">
                     <span class="am-icon-check icon-ok" v-show="hasPassword" @click='showPassword'></span>
                     <div @click='showPassword' class="div-icon-check">
                         <i class="am-icon-eye eyePink"></i>
@@ -88,6 +89,9 @@
 </script>
 
 <style scoped>
+    html {
+    }
+
     .clearFix:after {
         content: '.';
         clear: both;
@@ -102,7 +106,7 @@
 
     .loginMain {
         width: 100%;
-        max-height: 100%;
+        min-height: 100%;
         background: url("../assets/login/loginbg.png") no-repeat;
         background-size: 100% auto;
         display: inline-block;
@@ -197,7 +201,6 @@
         padding: 5px;
         line-height: 32px;
         margin: 10px 0;
-        background: #faffaf;
     }
 
     .getBack {
