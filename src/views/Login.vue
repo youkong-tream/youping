@@ -1,31 +1,33 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="loginMain">
         <div class="loginNav">
-            <a class="nav_back" @click='toHome'><</a>
+            <a class="nav_back" @click='toHome'><span class="iconfont icon-shangyiyehoutuifanhui back"></span></a>
             <a class="nav_reg" @click='toRegister'>注册</a>
         </div>
         <div class="mainLogo"></div>
         <div class="mainBox">
             <form class="clearFix">
                 <div class="logoInput fn-left clearFix"><label
-                    class=" fn-left am-icon-mobile-phone icon1"></label>
-                    <input class="fn-left" v-model="mobile" placeholder="请填写手机号"><span class="am-icon-check icon-ok"
-                                                                                       v-show="hasMobile"></span>
+                    class=" iconfont fn-left icon-Phoneshouji icon1"></label>
+                    <input class="fn-left" v-model="mobile" placeholder="请填写手机号"><span
+                        class="iconfont icon-zhengquewancheng-yuankuang icon-ok"
+                        v-show="hasMobile"></span>
                 </div>
                 <div class="logoInput fn-left clearFix" v-if="isShowPassword">
-                    <label class=" fn-left am-icon-unlock-alt icon2"></label>
+                    <label class="iconfont fn-left icon-jiesuo icon2"></label>
                     <input class="fn-left" v-model="password" type="password" placeholder="请填写您的密码">
-                    <span class="am-icon-check icon-ok" v-show="hasPassword"></span>
+                    <span class="iconfont icon-zhengquewancheng-yuankuang icon-ok" v-show="hasPassword"></span>
                     <div @click='showPassword' class="div-icon-check">
-                        <i class="am-icon-eye eyePink"></i>
+                        <i class="iconfont icon-xianshikejian eyePink"></i>
                     </div>
                 </div>
                 <div class="logoInput fn-left clearFix" v-else>
-                    <label class=" fn-left am-icon-unlock-alt icon2"></label>
+                    <label class=" iconfont fn-left icon-jiesuo icon2"></label>
                     <input class="fn-left" v-model="password" type="text" placeholder="请填写您的密码">
-                    <span class="am-icon-check icon-ok" v-show="hasPassword" @click='showPassword'></span>
+                    <span class="iconfont icon-zhengquewancheng-yuankuang icon-ok" v-show="hasPassword"
+                          @click='showPassword'></span>
                     <div @click='showPassword' class="div-icon-check">
-                        <i class="am-icon-eye eyePink"></i>
+                        <i class="iconfont icon-yincangbukejian eyePink"></i>
                     </div>
                 </div>
                 <button class="btn btn-red btn-position" @click='login' v-bind:class="{ btnDisabled: isDisabled }">登录
@@ -79,19 +81,16 @@
                 return this.mobile != "";
             },
             hasPassword: function () {
-                return this.password != "";
+                return this.password.length >= 6;
             },
             isDisabled: function () {
-                return this.mobile == "" || this.password == "";
+                return this.mobile == "" || this.password.length <6;
             },
         }
     }
 </script>
 
 <style scoped>
-    html {
-    }
-
     .clearFix:after {
         content: '.';
         clear: both;
@@ -128,7 +127,8 @@
         border-radius: 15px;
         margin: 21.25rem 1rem 0;
         padding: 20px 0 60px 0;
-        background: #fff;
+        background: #fdfdfd;
+        opacity: 0.98;
         position: relative;
     }
 
@@ -171,7 +171,7 @@
     }
 
     .icon1 {
-        font-size: 2.8rem;
+        font-size: 2.1rem;
         line-height: 57px;
         color: #63b6f6;
     }
@@ -221,9 +221,8 @@
     .icon-ok {
         position: absolute;
         right: 15%;
-        bottom: 0;
-        color: #3ddd4f;
-        font-size: 16px;
+        color: #5eb95e;
+        font-size: 1.6rem;
     }
 
     .phoneLogin {
@@ -249,7 +248,7 @@
     }
 
     .loginNav .nav_back {
-        display: block;
+        display: inline-block;
         width: 40px;
         height: 100%;
         float: left;
@@ -258,6 +257,9 @@
         padding-left: 10px;
         color: #fff;
         font-size: 1.6rem;
+    }
+    .back{
+        font-size: 2.1rem;
     }
 
     .loginNav .nav_reg {
@@ -276,6 +278,7 @@
     }
 
     .eyePink {
+        font-size: 2.3rem;
         color: #FE6571;
     }
 </style>

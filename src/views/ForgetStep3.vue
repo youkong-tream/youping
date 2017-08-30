@@ -1,20 +1,22 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="registerMain">
         <div class="registerNav">
-            <a href="#" class="nav_back"><</a>
+            <a href="#" class="nav_back"><span class="iconfont icon-shangyiyehoutuifanhui back"></span></a>
             <div class="nav_reg">找回密码</div>
         </div>
         <div class="registerInput">
-            <label for="regPhoneNumber" class="am-icon-unlock-alt regIcon2">
+            <label for="regPhoneNumber" class="iconfont icon-jiesuo regIcon2">
             </label>
             <input id="regPhoneNumber" v-model="password1" type="text">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasPassword1"></span></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen"
+                                         v-show="hasPassword1"></span></div>
         </div>
         <div class="registerInput">
-            <label class="am-icon-unlock-alt regIcon2">
+            <label class="iconfont icon-jiesuo regIcon2">
             </label>
             <input v-model="password2" type="password">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasPassword2"></span></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen"
+                                         v-show="hasPassword2"></span></div>
         </div>
         <button type="submit" class="regSubmit" v-bind:class="{ btnDisabled: isDisabled }">提交</button>
     </div>
@@ -29,10 +31,10 @@
         },
         computed: {
             hasPassword1: function () {
-                return this.password1 != "";
+                return this.password1 >= 6;
             },
             hasPassword2: function () {
-                return this.password2 != "" && this.password1 == this.password2;
+                return this.password2 >= 6 && this.password1 == this.password2;
             },
             isDisabled: function () {
                 return this.password1 != this.password2;
@@ -62,6 +64,7 @@
     }
 
     .registerNav .nav_back {
+        display: inline-block;
         width: 40px;
         height: 100%;
         float: left;
@@ -70,6 +73,9 @@
         padding-left: 10px;
         color: #333;
         font-size: 1.6rem;
+    }
+    .back{
+        font-size: 2.1rem;
     }
 
     .registerNav .nav_reg {
@@ -124,12 +130,12 @@
 
     .regIconGreen {
         color: #00bb00;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
 
     }
 
     .regIcon2 {
-        font-size: 20px;
+        font-size: 2.1rem;
         margin: 0 20px 0 10px;
         color: #e2bf0d;
     }

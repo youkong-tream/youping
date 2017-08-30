@@ -1,25 +1,25 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="registerMain">
         <div class="registerNav">
-            <a href="#" class="nav_back"><</a>
+            <a href="#" class="nav_back"><span class="iconfont icon-shangyiyehoutuifanhui back"></span></a>
             <div class="nav_reg">注册</div>
         </div>
         <div class="registerInput">
             <label for="regPhoneNumber">
         <span>
           <i class="regIconRed">*</i>
-          <i class="am-icon-mobile-phone regIcon1"></i>
+          <i class="iconfont icon-Phoneshouji regIcon1"></i>
         </span>
             </label>
             <input id="regPhoneNumber" v-model="mobile">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasMobile"></span></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen" v-show="hasMobile"></span></div>
         </div>
         <div class="registerInput noUnderline">
             <div class="Underline">
                 <label for="regVerificationCode">
         <span>
           <i class="regIconRed">*</i>
-          <i class="am-icon-check-circle-o regIcon3"></i>
+            <i class="iconfont icon-zhengquewancheng-xianxingyuankuang regIcon3"></i>
         </span>
                 </label>
                 <input id="regVerificationCode" class="regVerification" v-model="verification">
@@ -30,28 +30,28 @@
             <label for="regPassword">
         <span>
           <i class="regIconRed">*</i>
-          <i class="am-icon-unlock-alt regIcon2"></i>
+          <i class="iconfont icon-jiesuo regIcon2"></i>
         </span>
             </label>
             <input id="regPassword" v-model="password1">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasPassword1"></span>
-                <i class="am-icon-eye regIconPink"></i></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen" v-show="hasPassword1"></span>
+                <i class="iconfont icon-xianshikejian regIconPink"></i></div>
         </div>
         <div class="registerInput">
             <label for="regRepeatPassword">
         <span>
           <i class="regIconRed">*</i>
-          <i class="am-icon-unlock-alt regIcon2"></i>
+          <i class="iconfont icon-jiesuo regIcon2"></i>
         </span>
             </label>
             <input id="regRepeatPassword" v-model="password2">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasPassword2"></span></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen" v-show="hasPassword2"></span></div>
         </div>
         <div class="registerInput">
             <label for="regUserType">
         <span>
           <i class="regIconRed">*</i>
-          <i class="am-icon-user regIcon4"></i>
+          <i class="iconfont icon-yonghu regIcon4"></i>
         </span>
             </label>
             <select id="regUserType" v-model="userType">
@@ -79,10 +79,10 @@
                 return this.mobile != "";
             },
             hasPassword1: function () {
-                return this.password1 != "";
+                return this.password1.length >= 6;
             },
             hasPassword2: function () {
-                return this.password2 != "" && this.password1 == this.password2;
+                return this.password2.length >= 6 && this.password1 == this.password2;
             },
             isDisabled: function () {
                 return this.mobile == "" || this.verification == "" || this.password1 == "" || this.password2 == "" || this.userType == "" || this.password1 != this.password2;
@@ -107,6 +107,7 @@
     }
 
     .registerNav .nav_back {
+        display: inline-block;
         width: 40px;
         height: 100%;
         float: left;
@@ -115,6 +116,9 @@
         padding-left: 10px;
         color: #333;
         font-size: 1.6rem;
+    }
+    .back{
+        font-size: 2.1rem;
     }
 
     .registerNav .nav_reg {
@@ -155,6 +159,10 @@
     .registerInput label {
         display: inline-block;
         height: 100%;
+    }
+
+    .Underline label {
+        width: 5.5rem;
     }
 
     .registerInput input {
@@ -201,42 +209,42 @@
     }
 
     .regIconRed {
-        color: red;
+        color: #e73420;
         font-size: 1.5rem;
     }
 
     .regIconGreen {
-        color: #00bb00;
-        font-size: 1.5rem;
+        color: #5eb95e;
+        font-size: 1.8rem;
 
     }
 
     .regIconPink {
         color: #FE6571;
-        font-size: 1.5rem;
+        font-size: 2.3rem;
         float: right;
     }
 
     .regIcon1 {
-        font-size: 28px;
+        font-size: 2.1rem;
         margin: 0 20px 0 10px;
         color: #3babf4;
     }
 
     .regIcon2 {
-        font-size: 20px;
+        font-size: 2.1rem;
         margin: 0 20px 0 10px;
         color: #e2bf0d;
     }
 
     .regIcon3 {
-        font-size: 18px;
+        font-size: 1.8rem;
         margin: 0 20px 0 10px;
         color: #00c26f;
     }
 
     .regIcon4 {
-        font-size: 20px;
+        font-size: 2.1rem;
         margin: 0 20px 0 10px;
         color: #8c8c8c;
     }

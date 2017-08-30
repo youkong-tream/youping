@@ -1,17 +1,16 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="registerMain">
         <div class="registerNav">
-            <a href="#" class="nav_back"
-            ><</a>
+            <a href="#" class="nav_back"><span class="iconfont icon-shangyiyehoutuifanhui back"></span></a>
             <div class="nav_reg">找回密码</div>
         </div>
         <div class="registerInput">
-            <label for="regPhoneNumber" class="am-icon-mobile-phone regIcon1"></label>
+            <label for="regPhoneNumber" class="iconfont icon-Phoneshouji regIcon1"></label>
             <input id="regPhoneNumber" v-model="mobile" type="text">
-            <div class="regPrompt"><span class="am-icon-check regIconGreen" v-show="hasMobile"></span></div>
+            <div class="regPrompt"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen" v-show="hasMobile"></span></div>
         </div>
         <div class="registerInput">
-            <label for="regVerificationCode" class="am-icon-check-circle-o regIcon3"></label>
+            <label for="regVerificationCode" class="iconfont icon-zhengquewancheng-xianxingyuankuang regIcon3"></label>
             <input id="regVerificationCode" class="regVerification stepVerificationInput" v-model="verification"
                    type="text">
             <div class="stepVerification">
@@ -72,6 +71,7 @@
     }
 
     .registerNav .nav_back {
+        display: inline-block;
         width: 40px;
         height: 100%;
         float: left;
@@ -80,6 +80,9 @@
         padding-left: 10px;
         color: #333;
         font-size: 1.6rem;
+    }
+    .back{
+        font-size: 2.1rem;
     }
 
     .registerNav .nav_reg {
@@ -133,21 +136,21 @@
     }
 
     .regIconGreen {
-        color: #00bb00;
-        font-size: 1.5rem;
+        color: #5eb95e;
+        font-size: 1.8rem;
 
     }
 
     .regIcon1 {
-        font-size: 28px;
+        font-size: 2.1rem;
         margin: 0 20px 0 10px;
         color: #3babf4;
     }
 
     .regIcon3 {
-        font-size: 18px;
-        margin: 0 20px 0 10px;
-        color: #00c26f;
+        font-size: 1.8rem;
+        margin: 0 20px 0 11px;
+        color: #5eb95e;
     }
 
     .regPrompt {
