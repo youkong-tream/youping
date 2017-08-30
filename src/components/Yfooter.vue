@@ -2,34 +2,34 @@
   <div class="footer">
       <div class="footer-one" @click='toHome'>
           <div class ='footer-one-box'>
-              <div class="footer-one-icon" v-bind:class = 'isActive'></div>  
+              <div class="footer-one-icon" v-bind:class = 'isActive'></div>
               <span>首页</span>
-          </div>  
+          </div>
       </div>
       <div class="footer-two" @click='toList' >
           <div class = 'footer-two-box'>
               <div class="footer-two-icon" v-bind:class = 'isActive'></div>
               <span>商城</span>
-          </div>  
+          </div>
       </div>
       <div class="footer-three" @click='toShoppingCar'>
           <div class = 'footer-three-box'>
               <div class="footer-three-icon" v-bind:class = 'isActive'></div>
               <span>购物车</span>
           </div>
-      </div> 
+      </div>
       <div class="footer-four" @click='toMe'>
           <div class = 'footer-four-box'>
               <div class="footer-four-icon" v-bind:class = 'isActive'></div>
               <span>我的</span>
-          </div>      
+          </div>
       </div>
   </div>
 </template>
 <script>
 export default {
   data(){
-      return {     
+      return {
            isActive : false
       }
   },
@@ -58,7 +58,7 @@ export default {
 .footer {
     width:100%;
     height:55px;
-    border-top: 1px solid grey;
+    border-top: 0.15rem solid #e2e2e2;
     display:flex;
     background-color:white;
 }
@@ -74,7 +74,7 @@ export default {
 }
    .footer-one, .footer-two, .footer-three, .footer-four{
        width:25%;
-       height:55px;       
+       height:55px;
    }
       .footer-one-box,.footer-two-box,.footer-three-box,.footer-four-box {
           margin:10px auto;
@@ -87,7 +87,7 @@ export default {
                 background:url('../assets/footer/first.png')no-repeat;
                 background-size:100% auto;
                 margin:0 auto;
-            } 
+            }
                 .footer-one-icon .isActive {
                     width:17px;
                     height:17px;
