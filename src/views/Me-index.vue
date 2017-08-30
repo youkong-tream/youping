@@ -71,7 +71,7 @@ export default {
   },
   methods:{
     toAccount() {
-      this.$router.push('/me/account');
+      this.$router.push('/me/edit');
     },
     toShoppingCar() {
       this.$router.push('/shoppingCar');
