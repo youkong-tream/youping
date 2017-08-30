@@ -1,4 +1,3 @@
-
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -6,8 +5,7 @@ import Vuex from 'vuex'
 import store from './store'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
-import { AjaxPlugin } from 'vux'
-//route
+import {AjaxPlugin} from 'vux'
 import App from './App'
 import Home from './views/Home'
 import Yfooter from './components/Yfooter'
@@ -22,9 +20,7 @@ import RegisterIndex from './views/Register'
 import ForgetStep1 from './views/ForgetStep1'
 import ForgetStep2 from'./views/ForgetStep2'
 import ForgetStep3 from'./views/ForgetStep3'
-//懒加载
-
-
+import productDetail from './views/productDetail'
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
 Vue.use(Vuex)
@@ -44,10 +40,12 @@ const routes = [
   {path: '/forget/step1', component: ForgetStep1},
   {path: '/forget/step2', component: ForgetStep2},
   {path: '/forget/step3', component: ForgetStep3}
+  {path: '/lala', component: FooterTry},
+  {path: '/product', component: productDetail}
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 
 })
 // router.beforeEach((to,from,next) => {

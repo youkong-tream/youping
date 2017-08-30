@@ -2,9 +2,12 @@
     <div>
         <header>
             <article class="header-title">
-                <div class="header-title-left"><a href="#"><</a></div>
+                <div class="header-title-left"><a href="#"><span
+                    class="iconfont icon-shangyiyehoutuifanhui back"></span></a></div>
                 <div class="header-title-center">全部商品</div>
-                <div class="header-title-right"><a href="#"></a><a href="#" class=""></a></div>
+                <div class="header-title-right"><a href="#"><i class="list-shopCart am-icon-md"></i></a><a href="#"
+                                                                                                           class=""></a>
+                </div>
             </article>
             <div class="slide-cover">
                 <article class="header-slide">
@@ -21,7 +24,8 @@
         </header>
         <section class="commodity">
             <ul class="commodity-ul" v-bind:class="{commodityUlKeyframes:doAnimation}">
-                <li v-for="item in commodityData" class="commodity-li">
+                <li v-for="item in commodityData" class="commodity-li" @click="toDetails($event)"
+                    v-bind:data-Id=item.productId>
                     <div class="commodity-pic"><img v-bind:src=item.middlePicPath></div>
                     <div class="commodity-name">{{item.productName}}</div>
                     <div class="commodity-price">￥{{item.price1}}/{{ item.productUnit }}</div>
@@ -61,6 +65,7 @@
                 noMore: false,
                 allCommodity: true,
                 productType: "",
+                clickProductId: "",
                 itemText: [
                     {
                         name: '生活用品类',
@@ -140,6 +145,11 @@
                     }, 500);
                 }
             },
+            toDetails(e){
+                console.log(e.currentTarget);
+                this.clickProductId = e.currentTarget.getAttribute("data-Id");
+                this.$router.push('/product?productId=' + this.clickProductId);
+            }
         },
         components: {
             Yfooter: Yfooter,
@@ -424,4 +434,9 @@
         color: #191919;
     }
 
+</style>
+<style scoped>
+    .back {
+        font-size: 2.1rem;
+    }
 </style>

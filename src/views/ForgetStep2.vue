@@ -1,12 +1,12 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="registerMain">
         <div class="registerNav">
-            <a href="#" class="nav_back"><</a>
+            <a href="#" class="nav_back"><span class="iconfont icon-shangyiyehoutuifanhui back"></span></a>
             <div class="nav_reg">找回密码</div>
         </div>
         <div class="registerInput noUnderline">
             <div class="Underline">
-                <label for="regVerificationCode" class="am-icon-check-circle-o regIcon3"></label>
+                <label for="regVerificationCode" class="iconfont icon-zhengquewancheng-xianxingyuankuang regIcon3"></label>
                 <input id="regVerificationCode" class="regVerification" v-model="verification">
             </div>
             <div class="regVerificationBtn">获取验证码</div>
@@ -50,6 +50,7 @@
     }
 
     .registerNav .nav_back {
+        display: inline-block;
         width: 40px;
         height: 100%;
         float: left;
@@ -58,6 +59,9 @@
         padding-left: 10px;
         color: #333;
         font-size: 1.6rem;
+    }
+    .back{
+        font-size: 2.1rem;
     }
 
     .registerNav .nav_reg {

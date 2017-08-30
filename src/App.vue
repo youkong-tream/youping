@@ -14,8 +14,6 @@ export default {
 
 <style lang="less">
 @import '~vux/src/styles/reset.less';
-
-body {
-  background-color: #fbf9fe;
-}
+@import '../src/static/icon/iconfont.css';
+@import "../src/static/defaultStyle/defaultStlye.css";
 </style>
