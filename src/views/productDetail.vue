@@ -70,7 +70,17 @@
                 <span class="iconfont icon-cuowuguanbiquxiao close-panel-icon"></span>
             </div>
             <div class="buy-panel-info">
-                <span class="price-span">￥{{ price1 }}</span><span class="marketUnit-span">/{{ marketUnit }}</span>
+                <div class="panel-info-one"><span class="price-span">￥{{ price1 }}</span><span class="marketUnit-span">/{{ marketUnit }}</span>
+                </div>
+                <div class="panel-info-two">
+                    库存:{{ stockPayed }}{{ marketUnit }}
+                </div>
+
+            </div>
+            <div class="buy-panel-other" v-if="buyOther">
+                <span v-for="item in productGroupList">
+                    {{ item.ptTag }}
+                </span>
             </div>
             <div class="buy-panel-amount">
                 <div class="change-amount">
@@ -97,6 +107,7 @@
                 isScroll: false,
                 showPanel: false,
                 closePanel: false,
+                buyOther: false,
                 startX: 0,
                 endX: 0,
                 page: 0,
@@ -109,6 +120,10 @@
                 price1: "",
                 marketUnit: "",
                 productDetail: "",
+                stockAmount: "",
+                payedCount: "",
+                stockPayed: "",
+                productGroupList: [],
             }
         },
         methods: {
@@ -191,8 +206,16 @@
                     this.price1 = res.data.info.price1;
                     this.marketUnit = res.data.info.marketUnit;
                     this.productDetail = res.data.info.productDetail;
-                    console.log(res.data.message);
-                    console.log(res.data.info.groupBuyDetail);
+                    this.stockAmount = res.data.storageInfo.stockAmount;
+                    this.payedCount = res.data.storageInfo.payedCount;
+                    this.stockPayed = this.stockAmount - this.payedCount;
+                    if (res.data.productGroupList.length==0||!res.data.productGroupList) {
+                        this.buyOther = false;
+                    }
+                    else {
+                        this.buyOther = true;
+                        this.productGroupList = res.data.productGroupList;
+                    }
                 })
                 .catch(err => {
                     console.log(err)
@@ -608,7 +631,7 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
-        height: 19rem;
+        min-height: 19rem;
         background: #fff;
         position: fixed;
         bottom: 0;
@@ -642,6 +665,27 @@
         height: 8rem;
         border-bottom: 1px solid #eee;
         background: #fff;
+    }
+
+    .buy-panel-other {
+        height: 8rem;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+    }
+
+    .panel-info-one {
+        height: 5rem;
+        line-height: 5rem;
+        text-indent: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .panel-info-two {
+        height: 3rem;
+        line-height: 3rem;
+        text-indent: 1rem;
+        font-size: 1.3rem;
+        color: #666;
     }
 
     .buy-panel-amount {

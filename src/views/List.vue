@@ -348,8 +348,9 @@
 
     .commodity-pic {
         width: 95%;
+        height: 13rem;
         min-height: 11rem;
-        max-height: 13.5rem;
+        max-height: 14rem;
         margin: 0.5rem auto 1rem;
         background: url(../assets/list/logo.png) no-repeat center;
         background-size: 60% 60%;
