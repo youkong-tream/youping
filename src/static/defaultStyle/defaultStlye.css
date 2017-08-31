@@ -589,6 +589,12 @@ input:not([type="radio"]):not([type="checkbox"]),
 select {
     vertical-align: middle;
 }
+ul li{
+    list-style: none;
+}
+ol li{
+    list-style: none;
+}
 /**
  * Fix viewport for IE10 snap mode
  * http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
