@@ -21,6 +21,7 @@ import ForgetStep1 from './views/ForgetStep1'
 import ForgetStep2 from'./views/ForgetStep2'
 import ForgetStep3 from'./views/ForgetStep3'
 import productDetail from './views/productDetail'
+import confirmOrder from  './views/confirmOrder'
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
 Vue.use(Vuex)
@@ -40,7 +41,8 @@ const routes = [
   {path: '/forget/step1', component: ForgetStep1},
   {path: '/forget/step2', component: ForgetStep2},
   {path: '/forget/step3', component: ForgetStep3},
-  {path: '/product', component: productDetail}
+  {path: '/product', component: productDetail},
+    {path:'/confirmOrder',component:confirmOrder},
 ]
 
 const router = new VueRouter({
