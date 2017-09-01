@@ -25,7 +25,7 @@
                 </article>
             </div>
         </header>
-        <section class="commodity">
+        <section class="commodity" @touchstart="doPress()" @touchend="doRelease()">
             <ul class="commodity-ul" v-bind:class="{commodityUlKeyframes:doAnimation}">
                 <li v-for="item in commodityData" class="commodity-li" @click="toDetails($event)"
                     v-bind:data-Id=item.productId>
@@ -34,12 +34,13 @@
                     <div class="commodity-price">￥{{item.price1}}/{{ item.productUnit }}</div>
                 </li>
             </ul>
-            <div class="prompt-more" v-bind:class="{pulled: canPulled}" v-if="!refresh&&!noMore"><p>上拉加载更多数据...</p>
+            <div class="prompt-more" v-bind:class="{pulled: canPulled}" v-if="!refresh&&!noMore">上拉加载更多数据...
             </div>
-            <div class="prompt-refresh move-refresh" v-if="refresh&&!noMore"><span>
+            <div class="prompt-refresh" v-if="refresh&&!noMore">
+                <span class="move-refresh">
                 <i class="iconfont icon-tongbu v-refresh"></i>
             </span></div>
-            <div class="prompt-refresh" v-if="noMore">看看其他的吧...</div>
+            <div class="prompt-refresh-other" v-if="noMore">看看其他的吧...</div>
         </section>
 
         <!-- 底部组件 -->
@@ -59,7 +60,7 @@
                     removeAttribute: function () {
                     }
                 },
-                widgetHeight: 50,
+                widgetHeight: 35,
                 totalPage: 7,
                 pageNumber: 1,
                 firstEnter: 0,
@@ -154,6 +155,43 @@
                 this.clickProductId = e.currentTarget.getAttribute("data-Id");
                 this.$router.push('/product?productId=' + this.clickProductId);
             },
+            doPress(){
+                if (this.firstEnter == 2) {
+                    this.firstEnter = 3;
+                    this.refresh = true;
+                }
+            },
+            doRelease(){
+                if (this.firstEnter == 3) {
+                    let commodity = document.getElementsByClassName("commodity")[0];
+                    let commodityUl = document.getElementsByClassName("commodity-ul")[0];
+                    let that = this;
+                    if (commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight + 30) {
+                        if (that.pageNumber < that.totalPage) {
+                            that.pageNumber++;
+                            that.firstEnter = 999;
+                            function down() {
+                                let timer = setTimeout(function () {
+                                    that.canPulled = false;
+                                    that.refresh = false;
+                                    clearTimeout(timer);
+                                }, 500);
+                            }
+
+                            that.loadProduct(down);
+                        }
+                        else {
+                            that.firstEnter = 6;
+                            that.refresh = false;
+                            that.noMore = true;
+                        }
+                    }
+                    else {
+                        this.firstEnter = 0;
+                        this.refresh = false;
+                    }
+                }
+            },
         },
         components: {
             Yfooter: Yfooter,
@@ -162,22 +200,18 @@
             let commodity = document.getElementsByClassName("commodity")[0];
             let prompt = document.getElementsByClassName("prompt-more")[0];
             let that = this;
-
-            function down() {
-                let timer = setTimeout(function () {
-                    that.canPulled = false;
-                    that.refresh = false;
-                    clearTimeout(timer);
-                }, 500);
-            }
-
             commodity.addEventListener('scroll', function () {
+                    console.log(that.firstEnter)
                     requestAnimationFrame(function () {
                         let commodity = document.getElementsByClassName("commodity")[0];
                         let commodityUl = document.getElementsByClassName("commodity-ul")[0];
+                        console.log(commodity.scrollTop + commodity.clientHeight);
+                        console.log(commodityUl.clientHeight);
+                        console.log(commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight);
                         if (commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight && that.firstEnter == 0) {
                             that.firstEnter = 1;
                             that.doAnimation = true;
+                            console.log(1);
                             let timer = setTimeout(function () {
                                 that.firstEnter = 2;
                                 that.canPulled = true;
@@ -185,23 +219,8 @@
                                 clearTimeout(timer);
                             }, 500)
                         }
-                        if (commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight && that.firstEnter == 2) {
-                            if (that.pageNumber < that.totalPage) {
-                                that.pageNumber++;
-                                that.firstEnter = 3;
-                                that.refresh = true;
-                                that.loadProduct(down);
-                            }
-                            else {
-                                that.firstEnter = 6;
-                            }
-                        }
                         if (commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight && that.firstEnter == 4) {
                             that.firstEnter = 404;
-                            that.noMore = true;
-                        }
-                        if (commodity.scrollTop + commodity.clientHeight >= commodityUl.clientHeight + that.widgetHeight && that.firstEnter == 6) {
-                            that.firstEnter = 304;
                             that.noMore = true;
                         }
                     });
@@ -393,27 +412,24 @@
         text-align: center;
         font-size: 1.4rem;
         color: #333;
-    }
-
-    .commodity .pulled {
-        height: 50px;
+        margin-bottom: 10px;
     }
 
     @keyframes loadMore {
         0% {
-            bottom: 0;
+            transform: translate3d(0, 0, 0);
         }
         25% {
-            bottom: 35px;
+            transform: translate3d(0, -30px, 0);
         }
         50% {
-            bottom: 55px;
+            transform: translate3d(0, -45px, 0);
         }
         75% {
-            bottom: 20px;
+            transform: translate3d(0, -20px, 0);
         }
         100% {
-            bottom: 0;
+            transform: translate3d(0, 0, 0);
         }
     }
 
@@ -423,27 +439,53 @@
 
     .prompt-refresh {
         width: 100%;
-        height: 20px;
+        height: 70px;
         text-align: center;
-        line-height: 20px;
+        line-height: 70px;
         font-size: 1.4rem;
+        font-weight: 600;
         color: #3b3b3b;
         margin-bottom: 10px;
     }
 
     .prompt-refresh span {
-        display: block;
-        width: 100%;
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        border-radius: 11px;
         text-align: center;
-        line-height: 20px;
+        line-height: 23px;
+    }
+
+    .prompt-refresh-other {
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 1.4rem;
+        color: #3b3b3b;
+        margin-bottom: 10px;
     }
 
     .v-refresh {
         font-size: 2.2rem;
-        color: #191919;
+        animation: refresh-color 2s infinite;
     }
-    .move-refresh{
+
+    .move-refresh {
         animation: refresh 0.5s infinite;
+    }
+
+    @keyframes refresh-color {
+        0% {
+            color: #00329b;
+        }
+        50% {
+            color: #509b00;
+        }
+        100% {
+            color: #ca001a;
+        }
     }
 
     @keyframes refresh {
@@ -477,7 +519,7 @@
     .title-right-icon {
         display: inline-block;
         margin: 0;
-        width: 46%;
+        width: 45%;
     }
 
     .title-right-icon i {

@@ -24,7 +24,7 @@
                     <ul class="contain" v-bind:class="{containLeft:isLeft,containRight:isRight}"
                         @touchstart="touchStart($event)" @touchend="touchEnd($event)">
                         <li v-for="item in middleImgList">
-                            <img v-bind:src=item>
+                            <img v-bind:src=item :onerror="logo">
                         </li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="collection-text">收藏</div>
                 </div>
                 <div class="joinCart">
-                    <div class="join-btn">加入购物车</div>
+                    <div class="join-btn" @touchstart="showPanelBtn()">加入购物车</div>
                 </div>
                 <div class="buy">
                     <div class="buy-btn" @touchstart="showPanelBtn()">立即购买</div>
@@ -63,22 +63,24 @@
             </footer>
         </div>
 
-        <div class="buy-panel-cover" v-if="showPanel">
+        <div class="buy-panel-cover" v-if="showPanel" v-bind:class="{closePanelDoCover:closePanel}">
         </div>
         <div class="buy-panel" v-if="showPanel" v-bind:class="{closePanelDo:closePanel}">
             <div class="close-panel" @touchstart="doClosePanel()">
                 <span class="iconfont icon-cuowuguanbiquxiao close-panel-icon"></span>
             </div>
             <div class="buy-panel-info">
-                <div class="panel-info-one"><span class="price-span">￥{{ price1 }}</span><span class="marketUnit-span">/{{ marketUnit }}</span>
+                <div class="panel-info-one"><span class="price-span price-span-panel ">￥{{ price1 }}</span><span
+                    class="marketUnit-span">/{{ marketUnit }}</span>
                 </div>
                 <div class="panel-info-two">
-                    库存:{{ stockPayed }}{{ marketUnit }}
+                    库存:&nbsp;{{ stockPayed }}{{ marketUnit }}
                 </div>
 
             </div>
             <div class="buy-panel-other" v-if="buyOther">
-                <span v-for="item in productGroupList">
+                <div class="other-attributes">其他属性:</div>
+                <span v-for="item in productGroupList" class="other-attributes-minBox">
                     {{ item.ptTag }}
                 </span>
             </div>
@@ -100,7 +102,22 @@
     export default {
         data () {
             return {
+                endX: 0,
+                page: 0,
+                startX: 0,
+                price1: "",
                 productId: "",
+                groupBuyDetail: "",
+                productStyle: "",
+                productName: "",
+                marketUnit: "",
+                productDetail: "",
+                stockAmount: "",
+                payedCount: "",
+                stockPayed: "",
+                middleImgList: [],
+                productGroupList: [],
+                amountListNumber: 1,
                 isLeft: false,
                 isRight: false,
                 isShowNav: false,
@@ -108,22 +125,8 @@
                 showPanel: false,
                 closePanel: false,
                 buyOther: false,
-                startX: 0,
-                endX: 0,
-                page: 0,
-                amountListNumber: 1,
                 left: [true, false, false, false],
-                middleImgList: [],
-                groupBuyDetail: "",
-                productStyle: "",
-                productName: "",
-                price1: "",
-                marketUnit: "",
-                productDetail: "",
-                stockAmount: "",
-                payedCount: "",
-                stockPayed: "",
-                productGroupList: [],
+                logo: 'this.src="' + require('../assets/list/logo.png') + '";this.style="width:46%;height:46%;display:block;margin:27%"',
             }
         },
         methods: {
@@ -144,7 +147,7 @@
                         that.left[that.page] = true;
                         clearTimeout(timer);
                         console.log(that.left)
-                    }, 450)
+                    }, 400)
                 }
                 if (this.endX > this.startX && that.page > 0) {
                     that.isRight = true;
@@ -156,7 +159,7 @@
                         that.page--;
                         that.left[that.page] = true;
                         clearTimeout(timer);
-                    }, 450)
+                    }, 400)
                 }
             },
             showNav(){
@@ -164,7 +167,6 @@
             },
             prevent(e){
                 e.stopPropagation();
-                console.log(1);
                 this.isScroll = true;
             },
             plus(){
@@ -209,7 +211,7 @@
                     this.stockAmount = res.data.storageInfo.stockAmount;
                     this.payedCount = res.data.storageInfo.payedCount;
                     this.stockPayed = this.stockAmount - this.payedCount;
-                    if (res.data.productGroupList.length==0||!res.data.productGroupList) {
+                    if (res.data.productGroupList.length == 0 || !res.data.productGroupList) {
                         this.buyOther = false;
                     }
                     else {
@@ -282,6 +284,7 @@
         width: 13.4rem;
         min-width: 150px;
         height: 13rem;
+        border-radius: 3px;
         background: #616161;
         opacity: 0.7;
     }
@@ -318,7 +321,7 @@
     }
 
     .productBac {
-        background: #fff;
+        background: #f6f6f6;
         width: 105%;
         min-width: 300px;
         padding: 0 5% 4rem 0;
@@ -353,18 +356,15 @@
         padding: 0;
         position: absolute;
         left: 0;
-        transform: translate3d(0, 0, 0);
     }
 
     .containLeft {
-        transform: translate3d(0, 0, 0);
-        animation: toLeft 0.4s ease forwards;
+        animation: toLeft 0.35s ease forwards;
         pointer-events: none;
     }
 
     .containRight {
-        transform: translate3d(0, 0, 0);
-        animation: toRight 0.4s ease forwards;
+        animation: toRight 0.35s ease forwards;
         pointer-events: none;
     }
 
@@ -375,7 +375,8 @@
         overflow: hidden;
         float: left;
         list-style: none;
-        background: #fff;
+        background: url(../assets/list/logo.png) #fff no-repeat center;
+        background-size: 46% 46%;
     }
 
     .contain li img {
@@ -409,36 +410,36 @@
 
     @keyframes toLeft {
         0% {
-            left: 0
+            transform: translate3d(0, 0, 0);
         }
         100% {
-            left: -100%
+            transform: translate3d(-25%, 0, 0);
         }
     }
 
     @keyframes toRight {
         0% {
-            left: 0
+            transform: translate3d(0, 0, 0);
         }
         100% {
-            left: 100%
+            transform: translate3d(25%, 0, 0);
         }
     }
 
     .left0 {
-        left: 0
+        transform: translate3d(0, 0, 0);
     }
 
     .left1 {
-        left: -100%
+        transform: translate3d(-100%, 0, 0);
     }
 
     .left2 {
-        left: -200%
+        transform: translate3d(-200%, 0, 0);
     }
 
     .left3 {
-        left: -300%
+        transform: translate3d(-300%, 0, 0);
     }
 
     span {
@@ -455,7 +456,7 @@
     .price {
         height: 30px;
         line-height: 30px;
-        font-weight: 600;
+        font-weight: 500;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
@@ -464,6 +465,10 @@
     .price-span {
         font-size: 1.7rem;
         color: #d12712;
+    }
+
+    .price-span-panel {
+        color: #ff4300;
     }
 
     .marketUnit-span {
@@ -540,27 +545,23 @@
 
     }
 
-    .join-btn {
+    .join-btn, .buy-btn {
         width: 92%;
         height: 2.8rem;
-        line-height: 2.5rem;
-        font-size: 1.6rem;
+        line-height: 2.8rem;
         margin: 0.6rem auto;
-        border-radius: 1.5rem;
-        color: #d12712;
+        border-radius: 1.4rem;
         border: 1px solid #d12712;
+        font-size: 1.5rem;
+    }
+
+    .join-btn {
+        color: #d12712;
     }
 
     .buy-btn {
-        width: 92%;
-        height: 2.8rem;
-        line-height: 2.5rem;
-        font-size: 1.5rem;
-        margin: 0.6rem auto;
-        border-radius: 1.6rem;
         color: #fff;
         background: #d12712;
-        border: 1px solid #d12712;
     }
 
     .collection-icon {
@@ -649,6 +650,7 @@
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
         background: #de3b3e;
+        overflow: hidden;
         position: absolute;
         right: 0.5rem;
         top: 0;
@@ -661,29 +663,41 @@
         font-size: 1.8rem;
     }
 
-    .buy-panel-info {
-        height: 8rem;
+    .buy-panel-info, .buy-panel-other {
+        height: 10rem;
         border-bottom: 1px solid #eee;
         background: #fff;
+        overflow: hidden;
+        padding: 0 1rem;
     }
 
-    .buy-panel-other {
-        height: 8rem;
-        border-bottom: 1px solid #eee;
-        background: #fff;
+    .other-attributes {
+        width: 100%;
+        height: 2rem;
+        margin: 1rem auto;
+        text-align: left;
+        line-height: 2rem;
+        color: #565656;
+    }
+
+    .other-attributes-minBox {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        border: 1px solid #999999;
+        border-radius: 3px;
+        color: #999999;
     }
 
     .panel-info-one {
         height: 5rem;
         line-height: 5rem;
-        text-indent: 1rem;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     .panel-info-two {
         height: 3rem;
         line-height: 3rem;
-        text-indent: 1rem;
         font-size: 1.3rem;
         color: #666;
     }
@@ -736,7 +750,7 @@
     }
 
     .amount-list-btn {
-        border: 1px solid #e7e7e7;
+        border: 1px solid #afafaf;
         border-radius: 1.5rem;
         height: 3rem;
         line-height: 2.5rem;

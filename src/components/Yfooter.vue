@@ -31,7 +31,7 @@
         data(){
             return {
                 isActive: [false, false, false, false],
-                address: ['/', '/list', '/login', '/me/index'],
+                address: ['/', '/list', '/shoppingCar', '/me/index'],
                 data: "",
             }
         },
