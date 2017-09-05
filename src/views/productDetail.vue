@@ -266,7 +266,7 @@
     }
 
     .detail-icon1 {
-        font-size: 2.4rem;
+        font-size: 2.3rem;
         color: #000000;
     }
 
@@ -514,7 +514,7 @@
     }
 
     footer {
-        height: 4rem;
+        height: 48px;
         width: 100%;
         border-top: 0.1rem solid #eaeaea;
         position: fixed;
@@ -529,6 +529,7 @@
         float: left;
         width: 20%;
         height: 100%;
+        position: relative;
     }
 
     .joinCart {
@@ -547,10 +548,10 @@
 
     .join-btn, .buy-btn {
         width: 92%;
-        height: 2.8rem;
-        line-height: 2.8rem;
-        margin: 0.6rem auto;
-        border-radius: 1.4rem;
+        height: 34px;
+        line-height: 32px;
+        margin: 6px auto;
+        border-radius: 17px;
         border: 1px solid #d12712;
         font-size: 1.5rem;
     }
@@ -566,14 +567,18 @@
 
     .collection-icon {
         color: #ff4300;
-        font-size: 2.1rem;
+        font-size: 28px;
+        position: absolute;
+        top: -6px;
+        left: 30%;
     }
 
     .collection-text {
-        height: 0.8rem;
-        font-size: 0.8rem;
-        line-height: 0.5rem;
+        font-size: 12px;
         color: #333;
+        position: absolute;
+        bottom: 0;
+        left: 32%;
     }
 </style>
 <style scoped>
@@ -616,9 +621,6 @@
             opacity: 0;
             transform: rotateX(-30deg);
         }
-        50% {
-            transform: rotateX(-10deg);
-        }
         100% {
             width: 100%;
             position: fixed;
@@ -631,8 +633,8 @@
     .buy-panel {
         width: 100%;
         margin: 0 auto;
-        overflow: hidden;
         height: auto;
+        min-height: 200px;
         background: #fff;
         position: fixed;
         bottom: 0;

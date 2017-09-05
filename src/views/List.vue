@@ -167,7 +167,7 @@
                     clearTimeout(this.timer)
                     this.timer = null
                     this.loadProduct();
-                    this.slide(200, 0)
+                    this.slide(100, 0)
                 }
             },
             toDetails(e){
@@ -354,7 +354,7 @@
     header {
         width: 100%;
         min-width: 250px;
-        height: 8rem;
+        height: 100px;
         background: #fafafa;
         overflow: hidden;
         position: fixed;
@@ -365,8 +365,9 @@
 
     header .header-title {
         width: 100%;
-        height: 3.6rem;
-        line-height: 3.6rem;
+        height: 45px;
+        line-height: 45px;
+        padding: 0;
         position: relative;
         background: #fafafa;
         border-bottom: 2px solid #eee;
@@ -393,7 +394,7 @@
         left: 8rem;
         right: 8rem;
         text-align: center;
-        line-height: 3.6rem;
+        line-height: 45px;
         font-size: 1.8rem;
     }
 
@@ -407,20 +408,20 @@
 
     .slide-cover {
         width: 100%;
-        height: 4rem;
+        height: 50px;
         overflow: hidden;
     }
 
     header .header-slide {
         min-width: 100%;
-        height: 5.5rem;
+        height: 66px;
         background: #fff;
         overflow-x: scroll;
         overflow-y: hidden;
     }
 
     .header-slide-ul {
-        height: 5.5rem;
+        height: 66px;
         padding: 0;
         white-space: nowrap;
     }
@@ -428,17 +429,17 @@
     .header-slide-ul li {
         display: inline-block;
         width: 9.5rem;
-        height: 5.5rem;
+        height: 66px;
         margin: 0 5px;
     }
 
     .header-slide-ul li div {
         margin: 0.5rem auto 1rem;
         width: 9.5rem;
-        height: 3.2rem;
+        height: 40px;
         font-size: 1.4rem;
         text-align: center;
-        line-height: 3.2rem;
+        line-height: 40px;
         color: #666;
         pointer-events: auto;
     }
@@ -446,7 +447,7 @@
     .header-slide-ul li .slideLiActive {
         border: 1px solid #f0e4e2;
         box-shadow: 0 0 5px #f0e4e2;
-        border-radius: 1.6rem;
+        border-radius: 20px;
         pointer-events: none;
         color: #de3b3e;
     }
@@ -459,7 +460,7 @@
 
     .commodity {
         position: fixed;
-        top: 8rem;
+        top: 100px;
         bottom: 45px;
         z-index: 99999;
         width: 100%;
@@ -585,7 +586,7 @@
     }
 
     .list-icon2 {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         color: #333;
     }
 
