@@ -67,7 +67,7 @@
         </div>
         <div class="buy-panel" v-if="showPanel" v-bind:class="{closePanelDo:closePanel}">
             <div class="close-panel" @touchstart="doClosePanel()">
-                <span class="iconfont icon-cuowuguanbiquxiao close-panel-icon"></span>
+                <span class="iconfont icon-cuowuguanbiquxiao-yuankuang close-panel-icon"></span>
             </div>
             <div class="buy-panel-info">
                 <div class="panel-info-one"><span class="price-span price-span-panel ">￥{{ price1 }}</span><span
@@ -632,7 +632,7 @@
         width: 100%;
         margin: 0 auto;
         overflow: hidden;
-        min-height: 19rem;
+        height: auto;
         background: #fff;
         position: fixed;
         bottom: 0;
@@ -667,8 +667,12 @@
         height: 10rem;
         border-bottom: 1px solid #eee;
         background: #fff;
-        overflow: hidden;
         padding: 0 1rem;
+    }
+
+    .buy-panel-amount {
+        height: 10rem;
+        background: #fff;
     }
 
     .other-attributes {
@@ -702,15 +706,9 @@
         color: #666;
     }
 
-    .buy-panel-amount {
-        height: 10rem;
-        background: #fff;
-    }
-
     .change-amount {
         height: 5rem;
         line-height: 5rem;
-        overflow: hidden;
     }
 
     .change-amount input {
@@ -771,7 +769,6 @@
         line-height: 2rem;
         text-align: center;
         font-size: 1.4rem;
-        overflow: hidden;
         margin: 1.5rem auto;
     }
 </style>
