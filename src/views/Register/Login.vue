@@ -60,7 +60,7 @@ import qs from 'qs'
                         console.log(res);
                         if(res.status === 200 && res.data.code === 1){                       
                         this.$router.push('/')
-                        this.$vux.toast.text(res.message,'middle')     
+                        this.$vux.toast.text(res.data.message,'middle')     
                         }else if(res.data.code != 1 && res.status == 200) {
                             this.$vux.toast.text(res.data.message,'middle')
                         }
@@ -115,13 +115,13 @@ import qs from 'qs'
     .loginMain {
         width: 100%;
         min-height: 100%;
-        background: url("../assets/login/loginbg.png") no-repeat;
+        background: url("../../assets/login/loginbg.png") no-repeat;
         background-size: 100% auto;
         display: inline-block;
     }
 
     .mainLogo {
-        background: url("../assets/login/login-logbg.png") no-repeat;
+        background: url("../../assets/login/login-logbg.png") no-repeat;
         width: 105px;
         height: 45px;
         position: absolute;
