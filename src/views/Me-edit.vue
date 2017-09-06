@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class = 'me-edit'>
         <div class = 'top'>
             <div class = 'back-icon' @click = 'toIndex'></div>
             <span class = 'title'>我的账户</span>
@@ -47,6 +47,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.me-edit {
+    
+}
 .top {
     width:100%;
     height: 42px;

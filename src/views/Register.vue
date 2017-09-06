@@ -23,8 +23,10 @@
         </span>
                 </label>
                 <input id="regVerificationCode" class="regVerification" v-model="verification">
+               <div class="regPrompt1"><span class="iconfont icon-zhengquewancheng-yuankuang regIconGreen" v-show=" identifyCodeLength"></span></div>
             </div>
-            <div class="regVerificationBtn">获取验证码</div>
+            <div class="regVerificationBtn" @click = 'identifyCode'>获取验证码</div>
+            <!-- <div class="regVerificationBtn" @click = 'identifyCode' v-else-if='didclick'>获取验证码</div> -->
         </div>
         <div class="registerInput">
             <label for="regPassword">
@@ -54,16 +56,19 @@
           <i class="iconfont icon-yonghu regIcon4"></i>
         </span>
             </label>
-            <select id="regUserType" v-model="userType">
-                <option value="1">普通用户</option>
-                <option value="2">会员用户</option>
+            <select id="regUserType" v-model="selected">
+                <option value="" selected>请选择用户类型</option>
+                <option value="11">会员用户</option>
+                <option value="12">服务店铺</option>
+                <option value='14'>商户</option>
             </select>
         </div>
-        <button type="submit" class="regSubmit" v-bind:class="{ btnDisabled: isDisabled }">注册</button>
-        <div class="regLogin">已有帐号？<a href="#">立即登录</a></div>
+        <button type="submit" class="regSubmit" @click = 'register()' v-bind:class="{ btnDisabled: isDisabled }">注册</button>
+        <div class="regLogin">已有帐号？<a @click = 'toLogin()'>立即登录</a></div>
     </div>
 </template>
 <script>
+import qs from 'qs'
     export default {
         data(){
             return {
@@ -71,12 +76,15 @@
                 verification: "",
                 password1: "",
                 password2: "",
-                userType: "1",
+                selected: "",
             }
         },
         computed: {
             hasMobile: function () {
                 return this.mobile != "";
+            },
+            identifyCodeLength:function () {
+                return this.verification.length === 6;
             },
             hasPassword1: function () {
                 return this.password1.length >= 6;
@@ -86,11 +94,78 @@
             },
             isDisabled: function () {
                 return this.mobile == "" || this.verification == "" || this.password1 == "" || this.password2 == "" || this.userType == "" || this.password1 != this.password2;
+            },
+            
+        },
+        methods: {
+            toLogin:function() {
+                 this.$router.push('/login')
+            },
+            identifyCode:function() {
+                let check = /^1\d{10}$/;
+                if (check.test(this.mobile)) {
+                    this.$http.post('/app/sendSmsCode.htm',qs.stringify({mobile:this.mobile,business:'register'}))
+                    .then((res) => {
+                         this.$vux.toast.text(res.data.message,'middle')
+                    })
+                    .catch((err) => {
+                         console.log(err)
+                    })
+                } else {
+                    this.$vux.toast.text('请输入正确的手机号码','middle')                  
+                }
+              
+            },
+            //先检验是否重复，再请求注册
+            register:function() {
+                this.$http.post('/app/verifyUser.htm',qs.stringify({
+                    userName:this.mobile
+                    }))
+                    .then((res) => {
+                        console.log(res)
+                        if(res.data.code === 0) {
+                            this.$vux.toast.text(res.data.message,'middle')
+                            }else if(res.data.code === 1) {
+                                 this.$http.post('/app/frontFirstRegister.htm',qs.stringify({
+                                    userName:this.mobile,
+                                    code:this.verification,
+                                    mobile:this.mobile,
+                                    logPassword:this.password1,
+                                    logPasswordConfirm:this.password2,
+                                    roleCode:this.selected,
+                                    ex:'ex'
+                                }))
+                                    .then((res) => {
+                                        console.log(res)
+                                        if(res.data.code === 0) {
+                                            this.$vux.toast.text(res.data.message,'middle')
+                                        }else if(res.data.code === 1) {
+                                            this.$vux.toast.text(res.data.message,'middle')
+                                            this.$router.push('/')
+                                        }
+                                    })
+                                    .catch((err) => {
+                                        console.log(res)
+                                    })
+                                  }
+                                })      
+                        
+                    .catch((err) => {
+                        console.log(err)
+                    })
+                }    
             }
-        }
     }
 </script>
 <style scoped>
+    .alertText {
+        height: 60px;
+        width:60px;
+        position: fixed;
+        top:40%;
+        left:40%;
+        background-color:#5eb95e;
+    }
 
     .registerMain {
         width: 100%;
@@ -254,6 +329,14 @@
         width: 45px;
         position: absolute;
         right: 10px;
+        bottom: 0;
+    }
+    .regPrompt1 {
+        height: 45px;
+        width: 45px;
+        position: absolute;
+        left: 50%;
+        /* top:-1%; */
         bottom: 0;
     }
 

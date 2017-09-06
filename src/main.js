@@ -5,7 +5,8 @@ import Vuex from 'vuex'
 import store from './store'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
-import {AjaxPlugin} from 'vux'
+import {AjaxPlugin,ToastPlugin} from 'vux'
+import qs from 'qs'
 import App from './App'
 import Home from './views/Home'
 import Yfooter from './components/Yfooter'
@@ -23,6 +24,7 @@ import ForgetStep3 from'./views/ForgetStep3'
 import productDetail from './views/productDetail'
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
+Vue.use(ToastPlugin)
 Vue.use(Vuex)
 
 const routes = [
@@ -39,8 +41,7 @@ const routes = [
   {path: '/register', component: RegisterIndex},
   {path: '/forget/step1', component: ForgetStep1},
   {path: '/forget/step2', component: ForgetStep2},
-  {path: '/forget/step3', component: ForgetStep3}
-  {path: '/lala', component: FooterTry},
+  {path: '/forget/step3', component: ForgetStep3},
   {path: '/product', component: productDetail}
 ]
 
