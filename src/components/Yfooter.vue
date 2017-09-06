@@ -31,7 +31,7 @@
         data(){
             return {
                 isActive: [false, false, false, false],
-                address: ['/', '/list', '/login', '/me/index'],
+                address: ['/', '/list', '/shoppingCar', '/me/index'],
                 data: "",
             }
         },
@@ -59,7 +59,7 @@
         height: 45px;
         border-top: 0.1rem solid #e2e2e2;
         display: flex;
-        background-color: white;
+        background: #fff;
     }
 
     span {
@@ -93,14 +93,14 @@
     }
 
     .footer-two-icon {
-        width: 15px;
+        width: 16px;
         height: 15px;
         background: url('../assets/footer/second.png') no-repeat;
         background-size: 100% 100%;
     }
 
     .footer-two-box .isActive {
-        width: 15px;
+        width: 16px;
         height: 15px;
         background: url('../assets/footer/second-after.png') no-repeat;
         background-size: 100% 100%;
@@ -126,7 +126,7 @@
     }
 
     .footer-four-box .isActive {
-        width: 15px;
+        width: 16px;
         height: 16px;
         background: url('../assets/footer/forth-after.png') no-repeat;
         background-size: 100% 100%;

@@ -6,7 +6,7 @@
           <span>优品电商</span>
         </div>
       </div>
-      <div class = 'middle'></div>       
+      <div class = 'middle'></div>
       <div class = 'middle-border'>
         <div class = 'middle-border-first' @click="firstRoute">
           <div class = 'middle-border-first-icon'></div>
@@ -32,8 +32,8 @@
           </div>
           <div class = 'middle-border-forth-backimg'></div>
         </div>
-      </div> 
-    </div>  
+      </div>
+    </div>
     <div class="foot">
       <Yfooter></Yfooter>
     </div>
@@ -45,7 +45,7 @@ import Yfooter from '../components/Yfooter'
 
 export default {
   components: {
-    Yfooter   
+    Yfooter
   },
   methods:{
     firstRoute:function(){
@@ -85,7 +85,7 @@ export default {
     thirdRoute:function() {
       this.$router.push('/list');
       console.log('hehe')
-    }
+    },
   }
 }
 </script>
@@ -103,7 +103,7 @@ export default {
     background-size:100% auto;
     height:180px;
 }
-    .top-font {
+    .top-font span{
       display:flex;
       align-items:center;
       justify-content: center;
@@ -113,11 +113,11 @@ export default {
 .middle{
   height:280px;;
   background-color:#EBEBEB;
-}  
+}
 .middle-border {
     height:320px;
     margin-top:-350px;
-   }  
+   }
       .middle-border-first,.middle-border-second,.middle-border-forth {
         height:88px;
         width:96%;
