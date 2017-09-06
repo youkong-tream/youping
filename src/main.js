@@ -5,7 +5,8 @@ import Vuex from 'vuex'
 import store from './store'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
-import {AjaxPlugin} from 'vux'
+import {AjaxPlugin,ToastPlugin} from 'vux'
+import qs from 'qs'
 import App from './App'
 import Home from './views/Home'
 import Yfooter from './components/Yfooter'
@@ -24,6 +25,7 @@ import productDetail from './views/productDetail'
 import confirmOrder from  './views/confirmOrder'
 Vue.use(VueRouter)
 Vue.use(AjaxPlugin)
+Vue.use(ToastPlugin)
 Vue.use(Vuex)
 
 const routes = [
@@ -42,7 +44,7 @@ const routes = [
   {path: '/forget/step2', component: ForgetStep2},
   {path: '/forget/step3', component: ForgetStep3},
   {path: '/product', component: productDetail},
-    {path:'/confirmOrder',component:confirmOrder},
+  {path:'/confirmOrder',component:confirmOrder}
 ]
 
 const router = new VueRouter({
