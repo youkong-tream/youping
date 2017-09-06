@@ -15,7 +15,7 @@
                 </div>
                 <div class="logoInput fn-left clearFix" v-if="isShowPassword">
                     <label class="iconfont fn-left icon-jiesuo icon2"></label>
-                    <input class="fn-left" v-model="password" type="password" placeholder="请填写您的密码">
+                    <input class="fn-left" v-model="passWord" type="password" placeholder="请填写您的密码">
                     <span class="iconfont icon-zhengquewancheng-yuankuang icon-ok" v-show="hasPassword"></span>
                     <div @click='showPassword' class="div-icon-check">
                         <i class="iconfont icon-xianshikejian eyePink"></i>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="logoInput fn-left clearFix" v-else>
                     <label class=" iconfont fn-left icon-jiesuo icon2"></label>
-                    <input class="fn-left" v-model="password" type="text" placeholder="请填写您的密码">
+                    <input class="fn-left" v-model="passWord" type="text" placeholder="请填写您的密码">
                     <span class="iconfont icon-zhengquewancheng-yuankuang icon-ok" v-show="hasPassword"
                           @click='showPassword'></span>
                     <div @click='showPassword' class="div-icon-check">
@@ -39,22 +39,31 @@
     </div>
 </template>
 <script>
+import qs from 'qs'
     export default {
         data: function () {
             return {
                 mobile: "",
-                password: "",
-                isShowPassword: true
+                passWord: "",
+                isShowPassword: true,
             }
         },
         methods: {
             login: function () {
-                this.$http.post('/app/login.htm', {
-                    password: this.password,
-                    mobile: this.mobile
-                })
-                    .then((response) => {
-                        console.log(response)
+                this.$http.post('/app/login.htm',qs.stringify({
+                    mobile: this.mobile,
+                    passWord: this.passWord,
+                    ex:'ex',
+                    captcha:''})
+                    )
+                    .then((res) => {
+                        console.log(res);
+                        if(res.status === 200 && res.data.code === 1){                       
+                        this.$router.push('/')
+                        this.$vux.toast.text(res.message,'middle')     
+                        }else if(res.data.code != 1 && res.status == 200) {
+                            this.$vux.toast.text(res.data.message,'middle')
+                        }
                     })
                     .catch((err) => {
                         console.log(err)
@@ -81,10 +90,10 @@
                 return this.mobile != "";
             },
             hasPassword: function () {
-                return this.password.length >= 6;
+                return this.passWord.length >= 6;
             },
             isDisabled: function () {
-                return this.mobile == "" || this.password.length <6;
+                return this.mobile == "" || this.passWord.length <6;
             },
         }
     }
