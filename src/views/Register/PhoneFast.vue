@@ -70,13 +70,13 @@
     .loginMain {
         width: 100%;
         max-height: 100%;
-        background: url("../assets/login/loginbg.png") no-repeat;
+        background: url("../../assets/login/loginbg.png") no-repeat;
         background-size: 100% auto;
         display: inline-block;
     }
 
     .mainLogo {
-        background: url("../assets/login/login-logbg.png") no-repeat;
+        background: url("../../assets/login/login-logbg.png") no-repeat;
         width: 105px;
         height: 45px;
         position: absolute;

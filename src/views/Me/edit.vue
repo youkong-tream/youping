@@ -17,7 +17,7 @@
             <div class = 'nickname'>
                 <span class = 'text'>昵称</span>
                 <span class = 'lala'>15025448997</span>
-                <div class = 'enter-icon'></div>
+                <div class = 'enter-icon'  @click = 'changeNickname'></div>
             </div>
             <div class = 'password'>
                 <span class ='text'>登录密码</span>
@@ -42,6 +42,9 @@ export default {
   methods:{
       toIndex:function(){
           this.$router.push('/me/index')
+      },
+      changeNickname:function() {
+          this.$router.push('/me/edit/changeNickname')
       }
   }
 }
@@ -59,7 +62,7 @@ export default {
     align-items:center;
 }
 .back-icon {
-    background:url('../assets/list/back.png')no-repeat;
+    background:url('../../assets/list/back.png')no-repeat;
     background-size:100% auto;
     width:20px;
     height:20px;
@@ -95,7 +98,7 @@ export default {
     right:50px;
 }
 .enter-icon {
-    background:url('../assets/me/list-back.png')no-repeat;
+    background:url('../../assets/me/list-back.png')no-repeat;
     background-size:100% auto;
     width:5px;
     height:14px;

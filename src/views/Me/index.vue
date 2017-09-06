@@ -68,7 +68,7 @@
     </div>
 </template>
 <script>
-    import Yfooter from '../components/Yfooter'
+    import Yfooter from '../../components/Yfooter'
     export default {
         components: {
             Yfooter
@@ -96,7 +96,7 @@
     }
 
     .me-top-backImg {
-        background: url('../assets/list/back.png') no-repeat;
+        background: url('../../assets/list/back.png') no-repeat;
         background-size: 100% auto;
         width: 23px;
         height: 23px;
@@ -112,7 +112,7 @@
 
     .me-middle-backImg {
         height: 270px;
-        background: url('../assets/me/background.png') no-repeat;
+        background: url('../../assets/me/background.png') no-repeat;
         background-size: 100% auto;
         display: flex;
         align-items: center;
@@ -146,7 +146,7 @@
     .me-middle-btn-left-img {
         width: 28px;
         height: 28px;
-        background: url('../assets/me/star.png') no-repeat;
+        background: url('../../assets/me/star.png') no-repeat;
         background-size: 100% auto;
         margin-left: 40px;
         margin-right: 10px;
@@ -161,7 +161,7 @@
     .me-middle-btn-right-img {
         width: 28px;
         height: 28px;
-        background: url('../assets/me/shoppingCar.png') no-repeat;
+        background: url('../../assets/me/shoppingCar.png') no-repeat;
         background-size: 100% auto;
         margin-left: 40px;
         margin-right: 10px;
@@ -182,7 +182,7 @@
     .me-middle-myList-order-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-order.png') no-repeat;
+        background: url('../../assets/me/list-order.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -197,7 +197,7 @@
     .me-middle-myList-order-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 34%;
     }
@@ -213,7 +213,7 @@
     .me-middle-myList-collect-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-collect.png') no-repeat;
+        background: url('../../assets/me/list-collect.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -228,7 +228,7 @@
     .me-middle-myList-collect-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 34%;
     }
@@ -244,7 +244,7 @@
     .me-middle-myList-coupon-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-coupon.png') no-repeat;
+        background: url('../../assets/me/list-coupon.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -259,7 +259,7 @@
     .me-middle-myList-coupon-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 34%;
     }
@@ -275,7 +275,7 @@
     .me-middle-myList-address-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-address.png') no-repeat;
+        background: url('../../assets/me/list-address.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -290,7 +290,7 @@
     .me-middle-myList-address-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 30%;
     }
@@ -305,7 +305,7 @@
     .me-middle-myList-balance-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-balance.png') no-repeat;
+        background: url('../../assets/me/list-balance.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -320,7 +320,7 @@
     .me-middle-myList-balance-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 34%;
     }
@@ -337,7 +337,7 @@
     .me-middle-myList-phone-img {
         width: 38px;
         height: 38px;
-        background: url('../assets/me/list-phone.png') no-repeat;
+        background: url('../../assets/me/list-phone.png') no-repeat;
         background-size: 100% auto;
         margin-left: 20px;
     }
@@ -352,7 +352,7 @@
     .me-middle-myList-phone-back {
         width: 10px;
         height: 18px;
-        background: url('../assets/me/list-back.png') no-repeat;
+        background: url('../../assets/me/list-back.png') no-repeat;
         background-size: 100% auto;
         margin-left: 34%;
     }
